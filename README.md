@@ -1,6 +1,6 @@
 # Building an Alexa Skill
 
-With the Alexa Skills kit you can make a program that can respond to requests from an Alexa device. Here, you'll learn how to build an app using Node that can handle these requests. Then, you'll learn how to create an AWS Lambda function to host your skill and get it connected to your Alexa.
+With the Alexa Skills kit you can make a program that responds to requests from an Alexa device. Here, you'll learn how to build an app using Node that can handle these requests. Then, you'll learn how to create an AWS Lambda function to host your skill and get it connected to your Alexa.
 
 ## Step 1\. Writing the code for your Alexa Skill
 
@@ -36,7 +36,7 @@ We're going to be using Amazon's [alexa-sdk](https://www.npmjs.com/package/alexa
       ]
     }
     ```
-This defines a skill that has two intent, a HelloWorldIntent, and a GetWeatherIntent. The GetWeatherIntent has an additional section called slots, which tells us that this intent will require information from the user (in this case a city) in order to run. In order to define a slot, you must give it a name and a type. Amazon has [a ton of premade types](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference), so its best to select one from that list when defining your slots.
+This defines a skill that has two intents, a HelloWorldIntent, and a GetWeatherIntent. The GetWeatherIntent has an additional section called slots, which tells us that this intent will require information from the user (in this case a city) in order to run. In order to define a slot, you must give it a name and a type. Amazon has [a ton of premade types](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference), so its best to select one from that list when defining your slots.
 
 1. You'll also need to define a list of Sample Utterances that will be used to invoke your program. Here is a list that would be applicable to the intent schema shown above.
 
@@ -51,7 +51,7 @@ This defines a skill that has two intent, a HelloWorldIntent, and a GetWeatherIn
     ```
 The more examples you provide, the more accurate Alexa will be at launching your skill at the correct times. For the intent that has a slot, we need to provide an example of something the user might say, along with the name of the slot in the format shown above. Save this as a separate file somewhere in your application. You'll need it later when you sit down with your mentor to set up the alexa skill on the developer portal.
 
-1. The first part of the application we'll want to implement are the event handlers. We defined the events our app will handle in the JSON file we just filled out in the developer portal. The handler object we create here will contain a key for each event we defined earlier. Here is an example that would work with the demo JSON file from the previous section:
+1. The first part of the application we'll want to implement are the event handlers. We defined the events our app will handle in the Intent Schema we defined above. The handler object we create here will contain a key for each event we defined earlier. Here is an example that would work with the demo JSON file from the previous section:
 
     ```
     var handlers = {
@@ -68,6 +68,9 @@ The more examples you provide, the more accurate Alexa will be at launching your
              //console.log(this.event.request);
 
              //then make your http request using the information from above
+
+             //this request wouldn't actually work because we didn't install a dependency
+             //to make requests. Install whatever request library you prefer and make your request here.
              request('weatherAPIUrl').then(function(response){
                     response.data.temperature = temp;
                     this.emit(':tell', 'The temperature is ' + temp);
@@ -76,7 +79,7 @@ The more examples you provide, the more accurate Alexa will be at launching your
      }
     ```
 
-    In order to have Alexa report back to the user, you use the `this.emit` function. The first parameter passed in (in this case, we used `':tell'`), tells the service how to respond to the user. If you use `':tell'`, Alexa will speak the text you pass in. If you pass in `':tellWithCard'` a card will show up in the Alexa app with the information you pass in.
+    In order to have Alexa report back to the user, we use the `this.emit` function. The first parameter passed in (in this case, we used `':tell'`), tells the service how to respond to the user. If you use `':tell'`, Alexa will speak the text you pass in. If you pass in `':tellWithCard'` a card will show up in the Alexa app with the information you pass in.
 
 1. Next, we need to register the `handlers` object we created above with the Alexa SDK.
 
@@ -90,7 +93,7 @@ The more examples you provide, the more accurate Alexa will be at launching your
 
   This code is tells the application what handlers have been defined and allows requests our app receives to be routed to the correct handler. In the last line, we tell the app to actually run with `alexa.execute()`.
 
-1. Now the app is ready to be uploaded to AWS. In the next step, we'll go over creating a function in AWS Lambda. But first, find your project folder on your computer and open it. Then compress everything inside the folder to a .zip file. It's extremely important that you open the file and the compress the contents, rather than just compressing the HelloAlexa folder, as that is the only way it will work.
+1. Now the app is ready to be uploaded to AWS. In the next step, we'll go over creating a function in AWS Lambda. But first, find your project folder on your computer and open it. Then compress everything inside the folder to a .zip file. It's extremely important that you open the file and the compress the contents, rather than just compressing the HelloAlexa folder, as that is the only way your function will work.
 
 ## Step 2. Setting up AWS Lambda
 
@@ -127,10 +130,10 @@ The more examples you provide, the more accurate Alexa will be at launching your
 
 The click "Create function" in the bottom right corner.
 
-1. Now, in the top right of the window, copy the ARN. You'll need to have this when you set up your skill in the Alexa developer portal.
+1. Now, in the top right of the window, copy the ARN and save it somewhere. You'll need to have this when you set up your skill in the Alexa developer portal.
 
 ## Step 3. Setting up your skill in the Alexa Developer portal
-1. For this part you'll need to sit down with your mentor because you'll need access to the DevMountain amazon account in order to connect your Lambda function with the Alexas on campus.
+1. For this part you'll need to sit down with your mentor because you'll need access to the DevMountain Amazon developer account in order to connect your Lambda function with the Alexas on campus.
 
 1. Navigate to the [Amazon Developer Portal]('https://developer.amazon.com/') and login.
 
@@ -150,7 +153,7 @@ The click "Create function" in the bottom right corner.
 
 ///image here
 
-1. Next, you'll be on the Configuration tab. Fill it out like below, and paste in the ARN from the top right of the page where you uploaded your zip file to AWS Lambda. It will start with 'arn:aws:lambda:us-east.' Then select next.
+1. Now you'll be on the Configuration tab. Fill it out like below, and paste in the ARN from the top right of the page where you uploaded your zip file to AWS Lambda. It should start with 'arn:aws:lambda:us-east.' Then select next.
 
 ///image here
 
@@ -161,5 +164,5 @@ The click "Create function" in the bottom right corner.
 
 
 ## More resources
-[Alexa NodeJS SDK]('https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs')
+[Alexa NodeJS SDK on Github]('https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs')
 [Alexa Skills Kit Docs]('https://developer.amazon.com/alexa-skills-kit')
