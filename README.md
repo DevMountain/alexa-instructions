@@ -16,6 +16,26 @@ We're going to be using Amazon's [alexa-sdk](https://www.npmjs.com/package/alexa
 
   `var Alexa = require('alexa-sdk')`
 
+1. First, we're going to create the Intent Schema for our action. The Intent Schema is a JSON object that tells the Alexa service the actions our application will handle. Here is the Intent Schema for the skill we're going to make in this project:
+
+    ```
+    {
+      "intents": [
+        {
+            "intent": "HelloWorldIntent"
+        },
+        {
+            "intent": "GetWeatherIntent",
+            "slots": [
+                "name": "city",
+                "type": "AMAZON.US_CITY"
+            ]
+        }
+      ]
+    }
+    ```
+This defines a skill that has two intent, a HelloWorldIntent, and a GetWeatherIntent. The GetWeatherIntent has an additional section called slots, which tells us that this intent will require information from the user (in this case a city) in order to run. In order to define a slot, you must give it a name and a type. Amazon has [a ton of premade types](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference), so its best to select one from that list when defining your slots.
+
 1. The first part of the application we'll want to implement are the event handlers. We defined the events our app will handle in the JSON file we just filled out in the developer portal. The handler object we create here will contain a key for each event we defined earlier. Here is an example that would work with the demo JSON file from the previous section:
 
     ```
@@ -38,7 +58,7 @@ We're going to be using Amazon's [alexa-sdk](https://www.npmjs.com/package/alexa
      }
     ```
 
-    In order to have Alexa report back to the user, you use the `this.emit` function. The first parameter passed in (in this case, we used `':tell'`), tells the service how to respond to the user. If you use `':tell'`, Alexa will speak the text you pass in. If you pass in `':tellWithCard'` a card will show up in the Alexa app with the informtion you pass in.
+    In order to have Alexa report back to the user, you use the `this.emit` function. The first parameter passed in (in this case, we used `':tell'`), tells the service how to respond to the user. If you use `':tell'`, Alexa will speak the text you pass in. If you pass in `':tellWithCard'` a card will show up in the Alexa app with the information you pass in.
 
 1. Next, we need to register the `handlers` object we created above with the Alexa SDK.
 
@@ -51,3 +71,5 @@ We're going to be using Amazon's [alexa-sdk](https://www.npmjs.com/package/alexa
   ```
 
   This code is tells the application what handlers have been defined and allows requests our app receives to be routed to the correct handler. In the last line, we tell the app to actually run with `alexa.execute()`.
+
+1. Now, we're ready to upload the app to our Lambda function we created earlier. Find your project folder on your computer and open it. Then compress everything inside the folder to a .zip file. It's extremely important that you open the file and the compress the contents, rather than just compressing the HelloAlexa folder, as that is the only way it will work.
