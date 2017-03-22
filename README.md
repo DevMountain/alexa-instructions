@@ -41,13 +41,13 @@ This defines a skill that has two intent, a HelloWorldIntent, and a GetWeatherIn
 1. You'll also need to define a list of Sample Utterances that will be used to invoke your program. Here is a list that would be applicable to the intent schema shown above.
 
     ```
-        HelloWorldIntent: say hello
-        HelloWorldIntent: tell me hello
-        GetWeatherIntent: get me the weather in {london | city}
-        GetWeatherIntent: how is the weather in {los angeles | city}
-        GetWeatherIntent: whats the weather like in {provo | city}
-        GetWeatherIntent: what is the temperature in {new york | city} today
-        GetWeatherIntent: how is the weather today in {phoenix | city}
+        HelloWorldIntent say hello
+        HelloWorldIntent tell me hello
+        GetWeatherIntent get me the weather in {london | city}
+        GetWeatherIntent how is the weather in {los angeles | city}
+        GetWeatherIntent whats the weather like in {provo | city}
+        GetWeatherIntent what is the temperature in {new york | city} today
+        GetWeatherIntent how is the weather today in {phoenix | city}
     ```
 The more examples you provide, the more accurate Alexa will be at launching your skill at the correct times. For the intent that has a slot, we need to provide an example of something the user might say, along with the name of the slot in the format shown above. Save this as a separate file somewhere in your application. You'll need it later when you sit down with your mentor to set up the alexa skill on the developer portal.
 
@@ -149,3 +149,17 @@ The click "Create function" in the bottom right corner.
 1. Below that, you can ignore the "Custom Slot Types" section, and paste in your Sample Utterances into the appropriate section. Then click next.
 
 ///image here
+
+1. Next, you'll be on the Configuration tab. Fill it out like below, and paste in the ARN from the top right of the page where you uploaded your zip file to AWS Lambda. It will start with 'arn:aws:lambda:us-east.' Then select next.
+
+///image here
+
+1. Now you're on the testing page. Here, in the section labeled 'Service simulator,' you can type in a phrase that your application is trained to accept. On the left side, you'll see the JSON that is sent to your program. On the right, you'll see your program's response. If you get an error, check the AWS console. Navigate to your Lambda function in AWS and click the "monitoring." On the right side, there should be a link to 'View Logs in CloudWatch.' From there you can see your error messages. Update your code accordingly, rezip the file, and upload it to AWS again.
+
+///image here
+///image here
+
+
+## More resources
+[Alexa NodeJS SDK]('https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs')
+[Alexa Skills Kit Docs]('https://developer.amazon.com/alexa-skills-kit')
