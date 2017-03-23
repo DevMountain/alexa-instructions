@@ -102,10 +102,10 @@ The more examples you provide, the more accurate Alexa will be at launching your
 1. When making your account select 'N. Virigina' as your data center. This is the only data center that currently supports Alexa requests. If you already have an account, log in and change your data center to N. Virginia by clicking in the nav bar next to your name.
 ///image here
 
-1. Once you're logged in and your data center is set to N. Virginia, head to the [AWS Console](https://console.aws.amazon.com) and type 'Lambda' into the search box at the top. Select the first option.
+1. Once you're logged in and your data center is set to N. Virginia, head to the [AWS Console](https://console.aws.amazon.com) and type 'Lambda' into the search box at the top. Select the first option.   
 ![](http://imgur.com/kZHMhFz.png)
 
-1. On the next page click on the 'Create a Lambda Function' button.
+1. On the next page click on the 'Create a Lambda Function' button.   
 ![](http://imgur.com/IM4XWkJ.png)
 
 1. Here, you're going to want to select the "Blank Function option."
@@ -135,7 +135,7 @@ The more examples you provide, the more accurate Alexa will be at launching your
 1. On the 'Get Started with Alexa' page, select 'Get Started >' under the 'Alexa Skills Kit' option.
 ![](http://imgur.com/kVlnUjG.png)
 
-1. Next, on the top right, select 'Add a new Skill'
+1. Next, on the top right, select 'Add a new Skill'   
 ![](http://imgur.com/fl33evf.png)
 
 1. Fill out the next section to look just like the example below. You can fill in your own Name, and Invocation Name. The invocation name is what you'll say to alexa when you want your skill to be invoked, so make it short and easy to remember. Then select next.
@@ -143,14 +143,14 @@ The more examples you provide, the more accurate Alexa will be at launching your
 
 1. On the next page, you're going to paste your Intent Schema into the section labeled "Intent Schema" that we created earlier.
 
-1. Below that, you can ignore the "Custom Slot Types" section, and paste in your Sample Utterances into the appropriate section. Then click next.
+1. Below that, you can ignore the "Custom Slot Types" section, and paste in your Sample Utterances into the appropriate section. Then click next.   
 ![](http://imgur.com/l5XjO1Y.png)
 
 1. Now you'll be on the Configuration tab. Fill it out like below, and paste in the ARN from the top right of the page where you uploaded your zip file to AWS Lambda. It should start with 'arn:aws:lambda:us-east.' Then select next.
 ![](http://imgur.com/ipZuBmX.png)
 
 1. Now you're on the testing page. Here, in the section labeled 'Service simulator,' you can type in a phrase that your application is trained to accept. On the left side, you'll see the JSON that is sent to your program. On the right, you'll see your program's response. If you get an error, check the AWS console. Navigate to your Lambda function in AWS and click the "monitoring." On the right side, there should be a link to 'View Logs in CloudWatch.' From there you can see your error messages. Update your code accordingly, rezip the file, and upload it to AWS again.
-![](http://imgur.com/ej8xtfJ.png)
+![](http://imgur.com/ej8xtfJ.png)      
 
 ![](http://i.imgur.com/MeujO69.png)
 
