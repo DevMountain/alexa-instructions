@@ -103,21 +103,16 @@ The more examples you provide, the more accurate Alexa will be at launching your
 ///image here
 
 1. Once you're logged in and your data center is set to N. Virginia, head to the [AWS Console](https://console.aws.amazon.com) and type 'Lambda' into the search box at the top. Select the first option.
-
-///image here
-
+![](http://imgur.com/kZHMhFz.png)
 
 1. On the next page click on the 'Create a Lambda Function' button.
-
-///image here
-
+![](http://imgur.com/IM4XWkJ.png)
 
 1. Here, you're going to want to select the "Blank Function option."
-///image here
-
+![](http://imgur.com/aITewUu.png)
 
 1. On the next page, the Configure triggers page, click on the grey box and select Alexa Skills Kit from the dropdown. Then click next. This tells Lambda that the function you're creating will be triggered by an Alexa request.
-///image here
+![](http://imgur.com/EIVclN4.png)
 
 1. Next, under the configure function option, give your function a name, this can be anything you want. Optionally, give it a description. Make sure the runtime is set to "Node.js 4.3"
 
@@ -125,10 +120,8 @@ The more examples you provide, the more accurate Alexa will be at launching your
 
 1. Further down the page, in the 'Lambda function handler and role' section, leave the Handler option set to 'index.handler.' In the role dropdown, select 'Create custom role' and click 'Allow' in the new tab that opens. Click 'Next' in the bottom right.
 
-1. Now, on the review page you'll be able to see all the options you've selected. It should look something like this:
-///image here
-
-The click "Create function" in the bottom right corner.
+1. Now, on the review page you'll be able to see all the options you've selected. It should look something like the image below. The click "Create function" in the bottom right corner.
+![](http://imgur.com/b7whaJf.png)
 
 1. Now, in the top right of the window, copy the ARN and save it somewhere. You'll need to have this when you set up your skill in the Alexa developer portal.
 
@@ -140,27 +133,26 @@ The click "Create function" in the bottom right corner.
 1. In the then head to the [Alexa section]('https://developer.amazon.com/edw/home.html#/') of the site by selecting "Alexa" in the nav bar.
 
 1. On the 'Get Started with Alexa' page, select 'Get Started >' under the 'Alexa Skills Kit' option.
+![](http://imgur.com/kVlnUjG.png)
 
 1. Next, on the top right, select 'Add a new Skill'
-///image here
+![](http://imgur.com/fl33evf.png)
 
 1. Fill out the next section to look just like the example below. You can fill in your own Name, and Invocation Name. The invocation name is what you'll say to alexa when you want your skill to be invoked, so make it short and easy to remember. Then select next.
-///image here
+![](http://imgur.com/3tClT4n.png)
 
 1. On the next page, you're going to paste your Intent Schema into the section labeled "Intent Schema" that we created earlier.
 
 1. Below that, you can ignore the "Custom Slot Types" section, and paste in your Sample Utterances into the appropriate section. Then click next.
-
-///image here
+![](http://imgur.com/l5XjO1Y.png)
 
 1. Now you'll be on the Configuration tab. Fill it out like below, and paste in the ARN from the top right of the page where you uploaded your zip file to AWS Lambda. It should start with 'arn:aws:lambda:us-east.' Then select next.
-
-///image here
+![](http://imgur.com/ipZuBmX.png)
 
 1. Now you're on the testing page. Here, in the section labeled 'Service simulator,' you can type in a phrase that your application is trained to accept. On the left side, you'll see the JSON that is sent to your program. On the right, you'll see your program's response. If you get an error, check the AWS console. Navigate to your Lambda function in AWS and click the "monitoring." On the right side, there should be a link to 'View Logs in CloudWatch.' From there you can see your error messages. Update your code accordingly, rezip the file, and upload it to AWS again.
+![](http://imgur.com/ej8xtfJ.png)
 
-///image here
-///image here
+![](http://i.imgur.com/MeujO69.png)
 
 
 ## More resources
