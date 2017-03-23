@@ -15,7 +15,6 @@ We're going to be using Amazon's [alexa-sdk](https://www.npmjs.com/package/alexa
 1. Start out in `index.js` by importing the Alexa package we just downloaded.
 
   `var Alexa = require('alexa-sdk')`
-
 1. First, we're going to create the Intent Schema for our action. You shouldn't include this in your ```index.js``` file since we'll be copying it into a form on the Alexa developer site later. For now, just save it in a file somewhere else on your computer. The Intent Schema is a JSON object that tells the Alexa service the actions our application will handle. Here is the Intent Schema for the skill we're going to make in this project:
 
     ```
@@ -107,7 +106,6 @@ The more examples you provide, the more accurate Alexa will be at launching your
     <img src="http://imgur.com/pgj9fQ1.png" width="300"/>
 </p>
 
-
 1. Once you're logged in and your data center is set to N. Virginia, head to the [AWS Console](https://console.aws.amazon.com) and type 'Lambda' into the search box at the top. Select the first option.   
 <p align="center">
     <img src="http://imgur.com/kZHMhFz.png" width="500" />
@@ -172,6 +170,7 @@ The more examples you provide, the more accurate Alexa will be at launching your
 <p align="center">
     <img src="http://i.imgur.com/MeujO69.png" width="600" />
 </p>
+
 ## More resources
 [Random Fact Alexa App Tutorial by Amazon](https://github.com/alexa/skill-sample-nodejs-fact)   
 [Alexa NodeJS SDK on Github](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs)   
