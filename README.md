@@ -16,7 +16,7 @@ We're going to be using Amazon's [alexa-sdk](https://www.npmjs.com/package/alexa
 
   `var Alexa = require('alexa-sdk')`
 
-1. First, we're going to create the Intent Schema for our action. You shouldn't include this in your index.js file since we'll be copying it into a form on the Alexa developer site later. For now, just save it in a file somewhere else inside your project. The Intent Schema is a JSON object that tells the Alexa service the actions our application will handle. Here is the Intent Schema for the skill we're going to make in this project:
+1. First, we're going to create the Intent Schema for our action. You shouldn't include this in your ```index.js``` file since we'll be copying it into a form on the Alexa developer site later. For now, just save it in a file somewhere else on your computer. The Intent Schema is a JSON object that tells the Alexa service the actions our application will handle. Here is the Intent Schema for the skill we're going to make in this project:
 
     ```
     {
@@ -41,15 +41,15 @@ This defines a skill that has two intents, a HelloWorldIntent, and a GetWeatherI
 1. You'll also need to define a list of Sample Utterances that will be used to invoke your program. Here is a list that would be applicable to the intent schema shown above.
 
     ```
-        HelloWorldIntent say hello
-        HelloWorldIntent tell me hello
-        GetWeatherIntent get me the weather in {london | city}
-        GetWeatherIntent how is the weather in {los angeles | city}
-        GetWeatherIntent whats the weather like in {provo | city}
-        GetWeatherIntent what is the temperature in {new york | city} today
-        GetWeatherIntent how is the weather today in {phoenix | city}
+    HelloWorldIntent say hello
+    HelloWorldIntent tell me hello
+    GetWeatherIntent get me the weather in {city}
+    GetWeatherIntent how is the weather in {city}
+    GetWeatherIntent whats the weather like in {city}
+    GetWeatherIntent what is the temperature in {city} today
+    GetWeatherIntent how is the weather today in {city}
     ```
-The more examples you provide, the more accurate Alexa will be at launching your skill at the correct times. For the intent that has a slot, we need to provide an example of something the user might say, along with the name of the slot in the format shown above. Save this along with your intent schema as a separate file somewhere in your application. You'll need it later when you sit down with your mentor to set up the alexa skill on the developer portal.
+The more examples you provide, the more accurate Alexa will be at launching your skill at the correct times. For the intent that has a slot, we need to provide the name of the slot in the format shown above. When defining the sample utterances, you don't need to worry about punctuation. Save this along with your intent schema as a separate file somewhere. You'll need it later when you sit down with your mentor to set up the alexa skill on the developer portal.
 
 1. Back in ```index.js```, the first part of the application we'll want to implement are the event handlers. We defined the events our app will handle in the Intent Schema we defined above. The handler object we create here will contain a key for each event we defined earlier. Here is an example that would work with the demo JSON file from the previous section:
 
@@ -98,7 +98,7 @@ The more examples you provide, the more accurate Alexa will be at launching your
 
 ## Step 2. Setting up AWS Lambda
 
-1. Go to [AWS]('https://aws.amazon.com') and sign up for a free account if you don't already have one. The free tier includes 1 million requests per month, so that should be plenty.
+1. Go to [AWS](https://aws.amazon.com) and sign up for a free account if you don't already have one. The free tier includes 1 million requests per month for one year, so that should be plenty.
 
 1. When making your account select 'N. Virigina' as your data center. This is the only data center that currently supports Alexa requests. If you already have an account, log in and change your data center to N. Virginia by clicking in the nav bar next to your name.
 ![](http://imgur.com/pgj9fQ1.png)
@@ -107,19 +107,19 @@ The more examples you provide, the more accurate Alexa will be at launching your
 ![](http://imgur.com/kZHMhFz.png)
 
 1. On the next page click on the 'Create a Lambda Function' button.   
-![](http://imgur.com/IM4XWkJ.png)
+![](http://imgur.com/IM4XWkJ.png)  
 
-1. Here, you're going to want to select the "Blank Function option."
+1. Next, you're going to want to select the "Blank Function option."   
 ![](http://imgur.com/aITewUu.png)
 
 1. On the next page, the Configure triggers page, click on the grey box and select Alexa Skills Kit from the dropdown. Then click next. This tells Lambda that the function you're creating will be triggered by an Alexa request.
 ![](http://imgur.com/EIVclN4.png)
 
-1. Next, under the configure function option, give your function a name, this can be anything you want. Optionally, give it a description. Make sure the runtime is set to "Node.js 4.3"
+1. Next, under the configure function option, give your function a name, this can be anything you want. Optionally, give it a description. Make sure the runtime is set to "Node.js 4.3" (the latest version Lambda supports).
 
 1. In the "Lambda function code" section, change the code entry type to be "Upload a .ZIP file" and then upload the .ZIP file we created earlier.
 
-1. Further down the page, in the 'Lambda function handler and role' section, leave the Handler option set to 'index.handler.' In the role dropdown, select 'Create custom role' and click 'Allow' in the new tab that opens. Click 'Next' in the bottom right.
+1. Further down the page, in the 'Lambda function handler and role' section, leave the Handler option set to 'index.handler.' In the role dropdown, select 'Create custom role' and click 'Allow' in the new tab that opens. Then click 'Next' in the bottom right.
 
 1. Now, on the review page you'll be able to see all the options you've selected. It should look something like the image below. The click "Create function" in the bottom right corner.
 ![](http://imgur.com/b7whaJf.png)
@@ -127,11 +127,11 @@ The more examples you provide, the more accurate Alexa will be at launching your
 1. Now, in the top right of the window, copy the ARN and save it somewhere. You'll need to have this when you set up your skill in the Alexa developer portal.
 
 ## Step 3. Setting up your skill in the Alexa Developer portal
-1. For this part you'll need to sit down with your mentor because you'll need access to the DevMountain Amazon developer account in order to connect your Lambda function with the Alexas on campus.
+1. For this part you'll need to sit down with your mentor because you need access to the DevMountain Amazon developer account in order to connect your Lambda function with the Alexas on campus.
 
-1. Navigate to the [Amazon Developer Portal]('https://developer.amazon.com/') and login.
+1. Navigate to the [Amazon Developer Portal](https://developer.amazon.com/) and login with the DevMountain Amazon developer account.
 
-1. In the then head to the [Alexa section]('https://developer.amazon.com/edw/home.html#/') of the site by selecting "Alexa" in the nav bar.
+1. Then then head to the [Alexa section](https://developer.amazon.com/edw/home.html#/) of the site by selecting "Alexa" in the nav bar.
 
 1. On the 'Get Started with Alexa' page, select 'Get Started >' under the 'Alexa Skills Kit' option.
 ![](http://imgur.com/kVlnUjG.png)
@@ -139,23 +139,22 @@ The more examples you provide, the more accurate Alexa will be at launching your
 1. Next, on the top right, select 'Add a new Skill'   
 ![](http://imgur.com/fl33evf.png)
 
-1. Fill out the next section to look just like the example below. You can fill in your own Name, and Invocation Name. The invocation name is what you'll say to alexa when you want your skill to be invoked, so make it short and easy to remember. Then select next.
+1. Fill out the next section to look just like the example below. You can fill in your own Name, and Invocation Name. The invocation name is what you'll say to alexa when you want your skill to be invoked, so make it short and easy to remember and understand. Then select next.
 ![](http://imgur.com/3tClT4n.png)
 
-1. On the next page, you're going to paste your Intent Schema into the section labeled "Intent Schema" that we created earlier.
+1. On the next page, you're going to paste your Intent Schema that we created earlier into the section labeled "Intent Schema". You can ignore the "Custom Slot Types" section. Then paste in your Sample Utterances into the appropriate section below. Then click next.   
+![](http://imgur.com/qviAzMB.png)  
 
-1. Below that, you can ignore the "Custom Slot Types" section, and paste in your Sample Utterances into the appropriate section. Then click next.   
-![](http://imgur.com/l5XjO1Y.png)
-
-1. Now you'll be on the Configuration tab. Fill it out like below, and paste in the ARN from the top right of the page where you uploaded your zip file to AWS Lambda. It should start with 'arn:aws:lambda:us-east.' Then select next.
+1. Next, fill out the configuration tab like below, and paste in the ARN for your Lambda function. The ARN tells Alexa what server to route requests to your app to. You can find it by logging in to your AWS account, going to your Lambda function and looking in the top right corner of the page. It should start with 'arn:aws:lambda:us-east.' Once you've completed this form select next.
 ![](http://imgur.com/ipZuBmX.png)
 
-1. Now you're on the testing page. Here, in the section labeled 'Service simulator,' you can type in a phrase that your application is trained to accept. On the left side, you'll see the JSON that is sent to your program. On the right, you'll see your program's response. If you get an error, check the AWS console. Navigate to your Lambda function in AWS and click the "monitoring." On the right side, there should be a link to 'View Logs in CloudWatch.' From there you can see your error messages. Update your code accordingly, rezip the file, and upload it to AWS again.
+1. Your Alexa app is now ready to be tested! You should be able to use your app on DevMountain's Alexas now. You can also test your app here on the testing page. Here, in the section labeled 'Service simulator,' you can type in a phrase that your application is trained to accept. On the left side, you'll see the JSON that is sent to your program. On the right, you'll see your program's response. If you get an error, check the AWS console. To see the console, navigate to your Lambda function in AWS and click on the "monitoring" tab. On the right side, there should be a link to 'View Logs in CloudWatch.' From there you can see your error messages. Update your code accordingly, rezip the file, and upload it to AWS again.
 ![](http://imgur.com/ej8xtfJ.png)      
 
 ![](http://i.imgur.com/MeujO69.png)
 
 
 ## More resources
-[Alexa NodeJS SDK on Github]('https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs')
-[Alexa Skills Kit Docs]('https://developer.amazon.com/alexa-skills-kit')
+[Random Fact Alexa App Tutorial by Amazon](https://github.com/alexa/skill-sample-nodejs-fact)   
+[Alexa NodeJS SDK on Github](https://github.com/alexa/alexa-skills-kit-sdk-for-nodejs)   
+[Alexa Skills Kit Docs](https://developer.amazon.com/alexa-skills-kit)
