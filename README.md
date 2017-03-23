@@ -94,24 +94,24 @@ The more examples you provide, the more accurate Alexa will be at launching your
   This code is tells the application what handlers have been defined and allows requests our app receives to be routed to the correct handler. In the last line, we tell the app to actually run with `alexa.execute()`.
 
 1. Now the app is ready to be uploaded to AWS. In the next step, we'll go over creating a function in AWS Lambda. But first, find your project folder on your computer and open it. Then compress everything inside the folder to a .zip file. It's extremely important that you open the file and the compress the contents, rather than just compressing the HelloAlexa folder, as that is the only way your function will work.   
-<img src="http://imgur.com/rCikqF2.png" width="450" />
+<img src="http://imgur.com/rCikqF2.png" width="450" align="center"/>
 
 ## Step 2. Setting up AWS Lambda
 
 1. Go to [AWS](https://aws.amazon.com) and sign up for a free account if you don't already have one. The free tier includes 1 million requests per month for one year, so that should be plenty.
 
 1. When making your account select 'N. Virigina' as your data center. This is the only data center that currently supports Alexa requests. If you already have an account, log in and change your data center to N. Virginia by clicking in the nav bar next to your name.   
-<img src="http://imgur.com/pgj9fQ1.png" width="300" />
+<img src="http://imgur.com/pgj9fQ1.png" width="300" align="center" />
 
 
 1. Once you're logged in and your data center is set to N. Virginia, head to the [AWS Console](https://console.aws.amazon.com) and type 'Lambda' into the search box at the top. Select the first option.   
-<img src="http://imgur.com/kZHMhFz.png" width="500" />
+<img src="http://imgur.com/kZHMhFz.png" width="500" align="center"/>
 
 1. On the next page click on the 'Create a Lambda Function' button.     
-<img src="http://imgur.com/IM4XWkJ.png" width="200" />
+<img src="http://imgur.com/IM4XWkJ.png" width="200" align="center" />
 
 1. Next, you're going to want to select the "Blank Function option."   
-<img src="http://imgur.com/aITewUu.png" width="300" />
+<img src="http://imgur.com/aITewUu.png" width="300" align="center" />
 
 1. On the next page, the Configure triggers page, click on the grey box and select Alexa Skills Kit from the dropdown. Then click next. This tells Lambda that the function you're creating will be triggered by an Alexa request.
 ![](http://imgur.com/EIVclN4.png)
@@ -123,7 +123,7 @@ The more examples you provide, the more accurate Alexa will be at launching your
 1. Further down the page, in the 'Lambda function handler and role' section, leave the Handler option set to 'index.handler.' In the role dropdown, select 'Create custom role' and click 'Allow' in the new tab that opens. Then click 'Next' in the bottom right.
 
 1. Now, on the review page you'll be able to see all the options you've selected. It should look something like the image below. The click "Create function" in the bottom right corner.   
-<img src="http://imgur.com/b7whaJf.png" width="500" />
+<img src="http://imgur.com/b7whaJf.png" width="500" align="center" />
 
 1. Now, in the top right of the window, copy the ARN and save it somewhere. You'll need to have this when you set up your skill in the Alexa developer portal.
 
@@ -138,13 +138,13 @@ The more examples you provide, the more accurate Alexa will be at launching your
 ![](http://imgur.com/kVlnUjG.png)
 
 1. Next, on the top right, select 'Add a new Skill'   
-<img src="http://imgur.com/fl33evf.png" width="200" />
+<img src="http://imgur.com/fl33evf.png" width="200" align="center"/>
 
 1. Fill out the next section to look just like the example below. You can fill in your own Name, and Invocation Name. The invocation name is what you'll say to alexa when you want your skill to be invoked, so make it short and easy to remember and understand. Then select next.
 ![](http://imgur.com/3tClT4n.png)
 
 1. On the next page, you're going to paste your Intent Schema that we created earlier into the section labeled "Intent Schema". You can ignore the "Custom Slot Types" section. Then paste in your Sample Utterances into the appropriate section below. Then click next.   
-<img src="http://imgur.com/qviAzMB.png" width="500" />
+<img src="http://imgur.com/qviAzMB.png" width="500" align="center"/>
 
 1. Next, fill out the configuration tab like below, and paste in the ARN for your Lambda function. The ARN tells Alexa what server to route requests to your app to. You can find it by logging in to your AWS account, going to your Lambda function and looking in the top right corner of the page. It should start with 'arn:aws:lambda:us-east.' Once you've completed this form select next.
 ![](http://imgur.com/ipZuBmX.png)
