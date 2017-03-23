@@ -16,7 +16,7 @@ We're going to be using Amazon's [alexa-sdk](https://www.npmjs.com/package/alexa
 
   `var Alexa = require('alexa-sdk')`
 
-1. First, we're going to create the Intent Schema for our action. The Intent Schema is a JSON object that tells the Alexa service the actions our application will handle. When you set up your Alexa skill on the Alexa Developer Portal, you'll need to have your schema ready. For now, just save it in a .js file inside your project. Here is the Intent Schema for the skill we're going to make in this project:
+1. First, we're going to create the Intent Schema for our action. You shouldn't include this in your index.js file since we'll be copying it into a form on the Alexa developer site later. For now, just save it in a file somewhere else inside your project. The Intent Schema is a JSON object that tells the Alexa service the actions our application will handle. Here is the Intent Schema for the skill we're going to make in this project:
 
     ```
     {
@@ -49,9 +49,9 @@ This defines a skill that has two intents, a HelloWorldIntent, and a GetWeatherI
         GetWeatherIntent what is the temperature in {new york | city} today
         GetWeatherIntent how is the weather today in {phoenix | city}
     ```
-The more examples you provide, the more accurate Alexa will be at launching your skill at the correct times. For the intent that has a slot, we need to provide an example of something the user might say, along with the name of the slot in the format shown above. Save this as a separate file somewhere in your application. You'll need it later when you sit down with your mentor to set up the alexa skill on the developer portal.
+The more examples you provide, the more accurate Alexa will be at launching your skill at the correct times. For the intent that has a slot, we need to provide an example of something the user might say, along with the name of the slot in the format shown above. Save this along with your intent schema as a separate file somewhere in your application. You'll need it later when you sit down with your mentor to set up the alexa skill on the developer portal.
 
-1. The first part of the application we'll want to implement are the event handlers. We defined the events our app will handle in the Intent Schema we defined above. The handler object we create here will contain a key for each event we defined earlier. Here is an example that would work with the demo JSON file from the previous section:
+1. Back in ```index.js```, the first part of the application we'll want to implement are the event handlers. We defined the events our app will handle in the Intent Schema we defined above. The handler object we create here will contain a key for each event we defined earlier. Here is an example that would work with the demo JSON file from the previous section:
 
     ```
     var handlers = {
@@ -69,7 +69,7 @@ The more examples you provide, the more accurate Alexa will be at launching your
 
              //then make your http request using the information from above
 
-             //this request wouldn't actually work because we didn't install a dependency
+             //this http request wouldn't actually work because we didn't install a dependency
              //to make requests. Install whatever request library you prefer and make your request here.
              request('weatherAPIUrl').then(function(response){
                     response.data.temperature = temp;
@@ -94,13 +94,14 @@ The more examples you provide, the more accurate Alexa will be at launching your
   This code is tells the application what handlers have been defined and allows requests our app receives to be routed to the correct handler. In the last line, we tell the app to actually run with `alexa.execute()`.
 
 1. Now the app is ready to be uploaded to AWS. In the next step, we'll go over creating a function in AWS Lambda. But first, find your project folder on your computer and open it. Then compress everything inside the folder to a .zip file. It's extremely important that you open the file and the compress the contents, rather than just compressing the HelloAlexa folder, as that is the only way your function will work.
+![](http://imgur.com/rCikqF2.png)
 
 ## Step 2. Setting up AWS Lambda
 
 1. Go to [AWS]('https://aws.amazon.com') and sign up for a free account if you don't already have one. The free tier includes 1 million requests per month, so that should be plenty.
 
 1. When making your account select 'N. Virigina' as your data center. This is the only data center that currently supports Alexa requests. If you already have an account, log in and change your data center to N. Virginia by clicking in the nav bar next to your name.
-///image here
+![](http://imgur.com/pgj9fQ1.png)
 
 1. Once you're logged in and your data center is set to N. Virginia, head to the [AWS Console](https://console.aws.amazon.com) and type 'Lambda' into the search box at the top. Select the first option.   
 ![](http://imgur.com/kZHMhFz.png)
