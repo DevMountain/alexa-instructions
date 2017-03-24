@@ -69,7 +69,7 @@ We're going to be using Amazon's <a href='https://www.npmjs.com/package/alexa-sd
              //this http request wouldn't actually work because we didn't install a dependency
              //to make requests. Install whatever request library you prefer and make your request here.
              request('weatherAPIUrl').then(function(response){
-                    response.data.temperature = temp;
+                    temp = response.data.temperature;
                     this.emit(':tell', 'The temperature is ' + temp);
              });
          }
