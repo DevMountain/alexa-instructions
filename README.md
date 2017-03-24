@@ -115,7 +115,7 @@ We're going to be using Amazon's <a href='https://www.npmjs.com/package/alexa-sd
 6. On the next page, the Configure triggers page, click on the grey box and select Alexa Skills Kit from the dropdown. Then click next. This tells Lambda that the function you're creating will be triggered by an Alexa request.
 ![](http://imgur.com/EIVclN4.png)
 
-7. Next, under the configure function option, give your function a name, this can be anything you want. Optionally, give it a description. Make sure the runtime is set to "Node.js 4.3" (the latest version Lambda supports).
+7. Next, under the configure function option, give your function a name, this can be anything you want. Optionally, give it a description. Make sure the runtime is set to "Node.js 4.3" (or whatever the latest version of Node is in the list of options).
 
 8. In the "Lambda function code" section, change the code entry type to be "Upload a .ZIP file" and then upload the .ZIP file we created earlier.
 
