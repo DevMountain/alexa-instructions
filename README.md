@@ -4,7 +4,7 @@ With the Alexa Skills kit you can make a program that responds to requests from 
 
 ## Step 1\. Writing the code for your Alexa Skill
 
-We're going to be using Amazon's [alexa-sdk](https://www.npmjs.com/package/alexa-sdk) for Node to write our application.
+We're going to be using Amazon's <a href='https://www.npmjs.com/package/alexa-sdk' target="blank">alexa-sdk</a> for Node to write our application.
 
 1. Set up a new project. Make a new folder called HelloAlexa.
 
@@ -15,7 +15,7 @@ We're going to be using Amazon's [alexa-sdk](https://www.npmjs.com/package/alexa
 4. Start out in `index.js` by importing the Alexa package we just downloaded.
 
 	`var Alexa = require('alexa-sdk')`
-5. First, we're going to create the Intent Schema for our action. You shouldn't include this in your ```index.js``` file since we'll be copying it into a form on the Alexa developer site later. For now, just save it in a file somewhere else on your computer. The Intent Schema is a JSON object that tells the Alexa service the actions our application will handle. The schema below defines a skill that has two intents, a HelloWorldIntent, and a GetWeatherIntent. The GetWeatherIntent has an additional section called slots, which tells us that this intent will require information from the user (in this case a city) in order to run. In order to define a slot, you must give it a name and a type. Amazon has [a ton of premade types](https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference), so its best to select one from that list when defining your slots.Here is the Intent Schema for the skill we're going to make in this project:
+5. First, we're going to create the Intent Schema for our action. You shouldn't include this in your ```index.js``` file since we'll be copying it into a form on the Alexa developer site later. For now, just save it in a file somewhere else on your computer. The Intent Schema is a JSON object that tells the Alexa service the actions our application will handle. The schema below defines a skill that has two intents, a HelloWorldIntent, and a GetWeatherIntent. The GetWeatherIntent has an additional section called slots, which tells us that this intent will require information from the user (in this case a city) in order to run. In order to define a slot, you must give it a name and a type. Amazon has <a href='https://developer.amazon.com/public/solutions/alexa/alexa-skills-kit/docs/built-in-intent-ref/slot-type-reference' target='blank'>a ton of premade types</a>, so its best to select one from that list when defining your slots. Here is the Intent Schema for the skill we're going to make in this project:
 
     ```
     {
@@ -86,18 +86,18 @@ We're going to be using Amazon's [alexa-sdk](https://www.npmjs.com/package/alexa
       alexa.execute();
   }
   ```
-9. Now the app is ready to be uploaded to AWS. In the next step, we'll go over creating a function in AWS Lambda. But first, find your project folder on your computer and open it. Then compress everything inside the folder to a .zip file. It's extremely important that you open the file and the compress the contents, rather than just compressing the HelloAlexa folder, as that is the only way your function will work when we upload it to AWS.   
+9. Now the app is ready to be uploaded to AWS. In the next step, we'll go over creating a function in AWS Lambda. But first, find your project folder on your computer and open it. Then compress everything inside the folder to a .zip file. It's extremely important that you open the file and the compress the contents, rather than just compressing the HelloAlexa folder, as that is the only way your function will work when you upload it to AWS.   
 <p align="center">
     <img src="http://imgur.com/rCikqF2.png" width="450"/>
 </p>
 
 ## Step 2. Setting up AWS Lambda
 
-1. Go to [AWS](https://aws.amazon.com) and sign up for a free account if you don't already have one. The free tier includes 1 million requests per month for one year, so that should be plenty.
+1. Go to <a href='https://aws.amazon.com' target='blank'>AWS</a> and sign up for a free account if you don't already have one. The free tier includes 1 million requests per month for one year, so that should be plenty.
 
 2. When making your account select 'N. Virigina' as your data center. This is the only data center that currently supports Alexa requests. If you already have an account, log in and change your data center to N. Virginia by clicking in the nav bar next to your name.   
 <p align="center"><img src="http://imgur.com/pgj9fQ1.png" width="300"/></p>
-3. Once you're logged in and your data center is set to N. Virginia, head to the [AWS Console](https://console.aws.amazon.com) and type 'Lambda' into the search box at the top. Select the first option.   
+3. Once you're logged in and your data center is set to N. Virginia, head to the <a href='https://console.aws.amazon.com' target='blank'>AWS Console</a> and type 'Lambda' into the search box at the top. Select the first option.   
 <p align="center">
     <img src="http://imgur.com/kZHMhFz.png" width="500" />
 </p>
@@ -131,9 +131,9 @@ We're going to be using Amazon's [alexa-sdk](https://www.npmjs.com/package/alexa
 ## Step 3. Setting up your skill in the Alexa Developer portal
 1. For this part you'll need to sit down with your mentor because you need access to the DevMountain Amazon developer account in order to connect your Lambda function with the Alexas on campus.
 
-2. Navigate to the [Amazon Developer Portal](https://developer.amazon.com/) and login with the DevMountain Amazon developer account.
+2. Navigate to the <a href='https://developer.amazon.com/' target='blank'>Amazon Developer Portal</a> and login with the DevMountain Amazon developer account.
 
-3. Then then head to the [Alexa section](https://developer.amazon.com/edw/home.html#/) of the site by selecting "Alexa" in the nav bar.
+3. Then then head to the <a href='https://developer.amazon.com/edw/home.html#/' target='blank'>Alexa section</a> of the site by selecting "Alexa" in the nav bar.
 
 4. On the 'Get Started with Alexa' page, select 'Get Started >' under the 'Alexa Skills Kit' option.
 ![](http://imgur.com/kVlnUjG.png)
